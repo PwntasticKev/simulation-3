@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { withRouter } from 'react-router'
+import { connect } from 'react-redux'
 
 class Auth extends Component {
   constructor(props) {
@@ -10,7 +12,7 @@ class Auth extends Component {
     }
   }
  registerUser() {
-   axios.post('/register').then(res => {
+   axios.post('/register', { username:'',password:'' }).then(res => {
      this.setState({
        username: res.data,
        password: res.data
@@ -33,4 +35,4 @@ class Auth extends Component {
   }
 }
 
-export default Auth
+export default withRouter(Auth)
