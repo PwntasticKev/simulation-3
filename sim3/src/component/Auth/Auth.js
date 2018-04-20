@@ -9,22 +9,25 @@ class Auth extends Component {
       password: ''
     }
   }
-  componentDidMount() {
-    axios.post('/register').then(res => {
-      this.setState({
-        username: res.data,
-        password: res.data
-      })
+ registerUser() {
+   axios.post('/register').then(res => {
+     this.setState({
+       username: res.data,
+       password: res.data
+     })
 
-    }) // post endpoints suck. 
+   }) // post endpoints suck. 
+ }
 
-  }
+  
 
   render() {
     return (
       <div>
-        <button>Login</button>
-        <button>Register</button>
+         <div className="login-container">
+          <button className='button'>Login</button>
+          <button className='button' onClick={e => this.registerUser()}>Register</button>
+         </div>
       </div>
     )
   }
